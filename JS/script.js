@@ -7,7 +7,6 @@ let shortBreakInput = document.querySelector('.input-with-arrows #short-break');
 let fontType = document.querySelectorAll('.font-options button.active');
 let color = document.querySelector('.color-options input:checked');
 let startBtn = document.querySelector('.start-btn');
-let isRunnig = false;
 const root = document.documentElement;
 // console.log(color.value);
 
@@ -135,9 +134,17 @@ startBtn.addEventListener('click', () => {
 document.querySelector('.apply-btn').addEventListener('click', apply);
 
 function apply(){
-  const selectedColor = document.querySelector('.color-options input:checked');
-  const selectedFontBtn = document.querySelector('.font-options button.active');
-  root.style.setProperty('--first-color', selectedColor.value);
-  document.body.setAttribute('data-font', selectedFontBtn.getAttribute('data-font'));
-  settingOverlay.classList.remove('open');
+    const selectedColor = document.querySelector('.color-options input:checked');
+    const selectedFontBtn = document.querySelector('.font-options button.active');
+    root.style.setProperty('--first-color', selectedColor.value);
+    document.body.setAttribute('data-font', selectedFontBtn.getAttribute('data-font'));
+    const activeTab = document.querySelector('.timer-type li.active');
+    if (activeTab.classList.contains('p-btn')) {
+        updateTimeDisplay(parseInt(promodoroInput.value, 10));
+    } else if (activeTab.classList.contains('s-btn')) {
+        updateTimeDisplay(parseInt(shortBreakInput.value, 10));
+    } else {
+        updateTimeDisplay(parseInt(longBreakInput.value, 10));
+    }
+    settingOverlay.classList.remove('open');
 }
