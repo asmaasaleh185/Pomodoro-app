@@ -70,6 +70,13 @@ button {
     transition: opacity 0.4s ease;
 }
 
+.logo-text {
+    font-size: 2rem;
+    color: var(--font-color);
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    margin-bottom: 1rem;
+  }
 
 .timer-type {
     background-color: #161932;
