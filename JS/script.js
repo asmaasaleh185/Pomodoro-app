@@ -8,6 +8,7 @@ let fontType = document.querySelectorAll('.font-options button.active');
 let color = document.querySelector('.color-options input:checked');
 let startBtn = document.querySelector('.start-btn');
 let continueBtn = document.querySelector('.continue-btn');
+let resetBtn = document.querySelector('.reset-btn');
 const root = document.documentElement;
 // console.log(color.value);
 
@@ -151,6 +152,29 @@ function continueTimer() {
     }, 1000);
   }
   
+function resetTimer() {
+    if (isRunning) {
+        clearInterval(timerInterval);
+        isRunning = false;
+      }
+
+      const activeTab = document.querySelector('.timer-type li.active').classList;
+      let minutes;
+      if (activeTab.contains('p-btn'))       minutes = parseInt(promodoroInput.value, 10);
+      else if (activeTab.contains('s-btn'))  minutes = parseInt(shortBreakInput.value, 10);
+      else                                    minutes = parseInt(longBreakInput.value, 10);
+
+      totalSeconds = minutes * 60;
+      timeLeft = totalSeconds;
+
+      updateUI();
+
+      startBtn.textContent = 'Start';
+      startBtn.style.display = 'inline-block';
+      continueBtn.style.display = 'none';
+    }
+    
+
 
 startBtn.addEventListener('click', () => {
   if (isRunning) pauseTimer();
@@ -158,6 +182,8 @@ startBtn.addEventListener('click', () => {
 });
 
 continueBtn.addEventListener('click', continueTimer);
+
+resetBtn.addEventListener('click', resetTimer);
 
 document.querySelector('.apply-btn').addEventListener('click', apply);
 
