@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro App</title>
+    <!-- google font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Roboto+Slab:wght@400;700&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+    <div class="home">
+        
+        <div class="setting">
+            <div class="setting-container">
+                <div class="setting-header">
+                    <h2>settings</h2>
+                    <button class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="setting-section">
+                    <section class="time-section">
+                        <h3>Time (minutes)</h3>
+                        <div class="time-inputs">
+                            <div class="time-group">
+                                <label for="pomodoro">Pomodoro</label>
+                                <div class="input-with-arrows">
+                                    <input id="pomodoro" type="number" inputmode="numeric" min="1" value="25">
+                                    <div class="arrows">
+                                        <span class="arrow up"><i class="fa-solid fa-chevron-up"></i></span>
+                                        <span class="arrow down"><i class="fa-solid fa-chevron-down"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="time-group">
+                                <label for="short-break">Short Break</label>
+                                <div class="input-with-arrows">
+                                    <input id="short-break" type="number" inputmode="numeric" min="1" value="5">
+                                    <div class="arrows">
+                                        <span class="arrow up"><i class="fa-solid fa-chevron-up"></i></span>
+                                        <span class="arrow down"><i class="fa-solid fa-chevron-down"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="time-group">
+                                <label for="long-break">Long Break</label>
+                                <div class="input-with-arrows">
+                                    <input id="long-break" type="number" inputmode="numeric" min="1" value="15">
+                                    <div class="arrows">
+                                        <span class="arrow up"><i class="fa-solid fa-chevron-up"></i></span>
+                                        <span class="arrow down"><i class="fa-solid fa-chevron-down"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="font-section">
+                        <h3>Font</h3>
+                        <div class="font-options">
+                            <button data-font="kumbh" class="font-btn active">Aa</button>
+                            <button data-font="roboto" class="font-btn">Aa</button>
+                            <button data-font="space" class="font-btn">Aa</button>
+                        </div>
+                    </section>
+                    <section class="color-section">
+                        <h3>Color</h3>
+                        <div class="color-options">
+                            <label><input type="radio" name="theme" value="#f87070" checked><span
+                                    class="dot red"></span></label>
+                            <label><input type="radio" name="theme" value="#70F3F8"><span class="dot blue"></span></label>
+                            <label><input type="radio" name="theme" value="#D881F8"><span class="dot purple"></span></label>
+                        </div>
+                    </section>
+                </div>
+                <div class="setting-footer">
+                    <button class="apply-btn">Apply</button>
+                  </div>
+            </div>
+        </div>
+        <div class="timer-wrapper">
+            <div class="timer-container">
+                <img src="assets/img/promodoro.svg" alt="">
+                <nav class="timer-type">
+                    <li class="active p-btn"><a href="#">promodoro</a></li>
+                    <li class="s-btn"><a href="#">short break</a></li>
+                    <li class="l-btn"><a href="#">long break</a></li>
+                </nav>
+                <div class="timer">
+                    <div class="inner">
+                        <svg class="progress-ring" width="300" height="300">
+                            <circle class="progress-ring__circle" stroke="#f87070" stroke-width="8" fill="transparent" stroke-linecap="round"
+                                r="135" cx="148" cy="150" />
+                        </svg>
+                        <div class="time-content">
+                            <h1 id="time-display" class="value">25:00</h1>
+                            <button id="start-pause-btn" class="start-btn">start</button>
+                        </div>
+                    </div>
+                </div>
+                <button class="setting-btn"><i class="fa-solid fa-gear"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="JS/script.js"></script>
+</body>
+
+</html>
