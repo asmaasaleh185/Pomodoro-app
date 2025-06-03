@@ -7,6 +7,7 @@ let shortBreakInput = document.querySelector('.input-with-arrows #short-break');
 let fontType = document.querySelectorAll('.font-options button.active');
 let color = document.querySelector('.color-options input:checked');
 let startBtn = document.querySelector('.start-btn');
+let continueBtn = document.querySelector('.continue-btn');
 const root = document.documentElement;
 // console.log(color.value);
 
@@ -83,6 +84,9 @@ function updateTimeDisplay(minutes){
   timeLeft     = totalSeconds;
   
   updateUI();
+  startBtn.textContent = 'Start';
+  startBtn.style.display = 'inline-block';
+  continueBtn.style.display = 'none';
 
 }
 
@@ -123,13 +127,37 @@ function startTimer() {
 function pauseTimer() {
   clearInterval(timerInterval);
   isRunning = false;
-  startBtn.textContent = 'Start';
+  startBtn.style.display = 'none';
+  continueBtn.style.display = 'inline-block';
 }
+
+function continueTimer() {
+    if (isRunning || timeLeft <= 0) return;
+    isRunning = true;
+    startBtn.style.display = 'inline-block';
+    continueBtn.style.display = 'none';
+    startBtn.textContent = 'Pause';
+  
+    timerInterval = setInterval(() => {
+      timeLeft--;
+      updateUI();
+  
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        isRunning = false;
+        startBtn.textContent = 'Start';
+        continueBtn.style.display = 'none';
+      }
+    }, 1000);
+  }
+  
 
 startBtn.addEventListener('click', () => {
   if (isRunning) pauseTimer();
   else           startTimer();
 });
+
+continueBtn.addEventListener('click', continueTimer);
 
 document.querySelector('.apply-btn').addEventListener('click', apply);
 
