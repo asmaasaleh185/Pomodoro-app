@@ -159,14 +159,21 @@ button {
     gap: 1.5rem;
 }
 
-.start-btn, .continue-btn {
+.controls {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    gap: 1rem;
+}
+
+.start-btn, .continue-btn, .reset-btn {
     color: var(--font-color);
     text-transform: uppercase;
     font-size: 1rem;
     letter-spacing: 10px;
 }
 
-.start-btn:hover, .continue-btn:hover {
+.start-btn:hover, .continue-btn:hover, .reset-btn:hover {
     color: var(--first-color);
     cursor: pointer;
 }
